@@ -1,0 +1,24 @@
+{
+    "name": "com.vk.eventsystem",
+    "version": "1.0.0",
+    "displayName": "Event Channel System",
+    "description": "Event Channel System",
+    "unity": "2019.1",
+    "dependencies": {       
+    },
+    "keywords": [
+        "events"
+    ],
+    "samples": [
+        {
+            "displayName": "Samples",
+            "description": "Sample scenes for demonstration purposes.",
+            "path": "Samples"
+        }
+    ],
+    "author": {
+        "name": "Varun Khatri",
+        "email": "varun.khatri18@gmail.com",
+        "url": ""
+    }
+}
