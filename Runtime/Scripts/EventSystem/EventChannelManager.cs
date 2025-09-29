@@ -41,5 +41,38 @@ namespace VK.Events
                 typedChannel?.Publish(eventData);
             }
         }
+
+        // Subscribe to a channel with a specific event type
+        public void Subscribe(string channelId, Action listener)
+        {
+            if (!_channels.TryGetValue(channelId, out IEventChannel channel))
+            {
+                channel = new VoidEventChannel();
+                _channels[channelId] = channel;
+            }
+
+            var typedChannel = channel as VoidEventChannel;
+            typedChannel?.Subscribe(listener);
+        }
+
+        // Unsubscribe from a channel
+        public void Unsubscribe(string channelId, Action listener)
+        {
+            if (_channels.TryGetValue(channelId, out IEventChannel channel))
+            {
+                var typedChannel = channel as VoidEventChannel;
+                typedChannel?.Unsubscribe(listener);
+            }
+        }
+
+        // Publish an event to a channel
+        public void Publish(string channelId)
+        {
+            if (_channels.TryGetValue(channelId, out IEventChannel channel))
+            {
+                var typedChannel = channel as VoidEventChannel;
+                typedChannel?.Publish();
+            }
+        }
     }
 }
