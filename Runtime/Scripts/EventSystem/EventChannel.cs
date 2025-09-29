@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace VK.Events
 {
@@ -28,4 +29,27 @@ namespace VK.Events
             OnEventRaised?.Invoke(eventData);
         }
     }
+
+    public class VoidEventChannel : IEventChannel
+    {
+        private event Action OnEventRaised;
+
+        public void Subscribe(Action listener) => OnEventRaised += listener;
+        public void Unsubscribe(Action listener) => OnEventRaised -= listener;
+        public void Publish() => OnEventRaised?.Invoke();
+    }
+
+    public class BoolEventChannel : EventChannel<bool> { }
+    public class IntEventChannel : EventChannel<int> { }
+    public class FloatEventChannel : EventChannel<float> { }
+    public class DoubleEventChannel : EventChannel<double> { }
+    public class LongEventChannel : EventChannel<long> { }
+    public class StringEventChannel : EventChannel<string> { }
+    public class Vector3EventChannel : EventChannel<Vector3> { }
+    public class Vector2EventChannel : EventChannel<Vector2> { }
+    public class QuaternionEventChannel : EventChannel<Quaternion> { }
+    public class ColorEventChannel : EventChannel<Color> { }
+    public class TransformEventChannel : EventChannel<Transform> { }
+    public class GameObjectEventChannel : EventChannel<GameObject> { }
+
 }
