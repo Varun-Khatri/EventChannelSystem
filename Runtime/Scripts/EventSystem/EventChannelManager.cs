@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace VK.Events
 {
-    public class EventChannelManager : MonoBehaviour
+    public interface IEventService { }
+
+    public class EventChannelManager : IEventService
     {
         // Dictionary to store event channels based on Channel IDs
         private readonly Dictionary<string, IEventChannel> _channels = new Dictionary<string, IEventChannel>();
