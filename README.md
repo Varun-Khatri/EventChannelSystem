@@ -65,14 +65,6 @@ IEventService ← EventService (pure C#) ← EventChannelManager (MonoBehaviour)
 - **`EventService`** - Pure C# implementation for non-Unity contexts
 - **`EventChannelManager`** - MonoBehaviour implementation for Unity scenes
 
-## 📦 Installation
-
-1. Download or clone this repository
-2. Add the files to your Unity project (2019.4+ recommended)
-3. Choose your implementation:
-   - Use `EventService` for pure C# systems
-   - Use `EventChannelManager` for MonoBehaviour-based systems
-
 ## 🚀 Quick Start
 
 ### 1. Define Your Event Channels
@@ -296,6 +288,7 @@ This system is part of my professional portfolio. Feel free to:
 - Use in your personal or commercial projects
 - Fork and modify for your specific needs
 - Suggest improvements or report issues
+
 
 
 
