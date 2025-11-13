@@ -3,34 +3,15 @@ using System.Collections.Generic;
 
 namespace VK.Events
 {
-    public interface IEventService
-    {
-        void Subscribe(int channelId, Action listener);
-        void Subscribe<T>(int channelId, Action<T> listener);
-        void Subscribe<T1, T2>(int channelId, Action<T1, T2> listener);
-        void Subscribe<T1, T2, T3>(int channelId, Action<T1, T2, T3> listener);
-        void Subscribe<T1, T2, T3, T4>(int channelId, Action<T1, T2, T3, T4> listener);
-
-        void Unsubscribe(int channelId, Action listener);
-        void Unsubscribe<T>(int channelId, Action<T> listener);
-        void Unsubscribe<T1, T2>(int channelId, Action<T1, T2> listener);
-        void Unsubscribe<T1, T2, T3>(int channelId, Action<T1, T2, T3> listener);
-        void Unsubscribe<T1, T2, T3, T4>(int channelId, Action<T1, T2, T3, T4> listener);
-
-        void Publish(int channelId);
-        void Publish<T>(int channelId, T eventData);
-        void Publish<T1, T2>(int channelId, T1 param1, T2 param2);
-        void Publish<T1, T2, T3>(int channelId, T1 param1, T2 param2, T3 param3);
-        void Publish<T1, T2, T3, T4>(int channelId, T1 param1, T2 param2, T3 param3, T4 param4);
-    }
-
     public class EventService : IEventService
     {
-        private readonly Dictionary<int, EventChannel> _channels = new Dictionary<int, EventChannel>();
+        private readonly Dictionary<int, EventChannel> _channels = new();
 
         // Zero parameters
-        public void Subscribe(int channelId, Action listener) =>
+        public void Subscribe(int channelId, Action listener)
+        {
             GetOrCreateChannel(channelId).Subscribe(listener);
+        }
 
         public void Unsubscribe(int channelId, Action listener)
         {
@@ -48,8 +29,10 @@ namespace VK.Events
         }
 
         // One parameter
-        public void Subscribe<T>(int channelId, Action<T> listener) =>
+        public void Subscribe<T>(int channelId, Action<T> listener)
+        {
             GetOrCreateChannel(channelId).Subscribe(listener);
+        }
 
         public void Unsubscribe<T>(int channelId, Action<T> listener)
         {
@@ -67,8 +50,10 @@ namespace VK.Events
         }
 
         // Two parameters
-        public void Subscribe<T1, T2>(int channelId, Action<T1, T2> listener) =>
+        public void Subscribe<T1, T2>(int channelId, Action<T1, T2> listener)
+        {
             GetOrCreateChannel(channelId).Subscribe(listener);
+        }
 
         public void Unsubscribe<T1, T2>(int channelId, Action<T1, T2> listener)
         {
@@ -86,8 +71,10 @@ namespace VK.Events
         }
 
         // Three parameters
-        public void Subscribe<T1, T2, T3>(int channelId, Action<T1, T2, T3> listener) =>
+        public void Subscribe<T1, T2, T3>(int channelId, Action<T1, T2, T3> listener)
+        {
             GetOrCreateChannel(channelId).Subscribe(listener);
+        }
 
         public void Unsubscribe<T1, T2, T3>(int channelId, Action<T1, T2, T3> listener)
         {
@@ -105,8 +92,10 @@ namespace VK.Events
         }
 
         // Four parameters
-        public void Subscribe<T1, T2, T3, T4>(int channelId, Action<T1, T2, T3, T4> listener) =>
+        public void Subscribe<T1, T2, T3, T4>(int channelId, Action<T1, T2, T3, T4> listener)
+        {
             GetOrCreateChannel(channelId).Subscribe(listener);
+        }
 
         public void Unsubscribe<T1, T2, T3, T4>(int channelId, Action<T1, T2, T3, T4> listener)
         {
@@ -130,6 +119,7 @@ namespace VK.Events
                 channel = new EventChannel();
                 _channels[channelId] = channel;
             }
+
             return channel;
         }
 
