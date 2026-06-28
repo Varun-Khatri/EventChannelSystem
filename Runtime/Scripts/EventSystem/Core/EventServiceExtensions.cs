@@ -8,7 +8,7 @@
             bool sendParam,
             int param)
         {
-            if (eventId != -1 || eventService == null)
+            if (eventService == null)
                 return;
 
             if (sendParam)
